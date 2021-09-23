@@ -153,22 +153,25 @@ Geometrically, if we consider any two points inside the set, then every point th
 %That is probability or error  is always non-zero.But if we operate the channel  below the capacity and for large n, in \eqref{2.15} we can observe P$_{e}$  approaches to 0.  
 %  
 %  
-  Now consider, we have pair of encoder and decoder $\left( ENC, DEC\right)$ and $\left( ENC', DEC'\right)$. First pair of encoder and decoder transmit $\alpha$k$_{1}$  bits in $\alpha$n channel use. And receiver received $\alpha$n symbols. Similarly second pair of  encoder and decoder transmit $ \left (1 - \alpha \right)$k$_{2}$  bits in $ \left( 1 -\alpha \right)$n channel use. And receiver received $\alpha$n symbols. \\ Overall rate of this setting is give as :
-  \begin{equation} 
-  	 \text{Rate} = \frac{ \alpha \text{k}_1 + (1 - \alpha)\text{k}_2}{\text{n}}
-  	\end{equation}
-  Suppose probability of error for channel first pair of ENC - DEC is $P_{e1}$ and for second pair is $P_{e2}$, then
-  For this the, overall probability of error  is :
-  \begin{equation}
-  	P_e = P_{e1} + P_{e2} -( P_{e1} \cap P_{e2})  \label{2.12}
-  	\end{equation}
- Since both are independent.
-  \begin{align}
-  	P_e = P_{e1} + P_{e2} - P_{e1}.P_{e2}  \label{2.13} \\
-  	\Rightarrow P_{e} \leq P_{e1} + P_{e2} \label{2.14}
-  \end{align}
+Now consider, we have pair of encoder and decoder $\left( ENC, DEC\right)$ and $\left( ENC', DEC'\right)$. First pair of encoder and decoder transmit $\alpha$k$_{1}$  bits in $\alpha$n channel use. And receiver received $\alpha$n symbols. Similarly second pair of  encoder and decoder transmit $ \left (1 - \alpha \right)$k$_{2}$  bits in $ \left( 1 -\alpha \right)$n channel use. And receiver received $\alpha$n symbols. \\ Overall rate of this setting is give as :
+\begin{equation} 
+	\text{Rate} = \frac{ \alpha \text{k}_1 + (1 - \alpha)\text{k}_2}{\text{n}}
+\end{equation}
+Suppose the probability of error for channel first pair of ENC - DEC is $P_{e1}$ and for the second pair is $P_{e2}$, then
+For this the overall probability of error  is :
+\begin{equation}
+	P_e = P_{e1} + P_{e2} -( P_{e1} \cap P_{e2})  \label{2.12}
+\end{equation}
+Since both are independent.
+\begin{align}
+	P_e = P_{e1} + P_{e2} - P_{e1}.P_{e2}  \label{2.13} \\
+	\Rightarrow P_{e} \leq P_{e1} + P_{e2} \label{2.14}
+\end{align}
 Where $P_{e1} = P_{e}^{\alpha \text{n}}$, $P_{e2} = P_{e}^{\left (1 - \alpha \right ) \text{n}}$ 
-As we know, if n is sufficiently large $P_{e1}$ and $P_{e2}$ asymptotically approaches to zero. Hence from \ref{2.12}, we can observe overall probability of error will be zero.
+As we know, if n is sufficiently large, $P_{e1}$ and $P_{e2}$ asymptotically approaches to zero. Hence from \ref{2.12}, we can observe the overall probability of error will be zero.
+
+
+
  
   
   
