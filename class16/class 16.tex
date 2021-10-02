@@ -1,0 +1,93 @@
+\documentclass{article}
+\usepackage{stackengine}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{cite}
+\title{Lecture 1: Introduction}
+\author{Shashank Vatedka}
+\usepackage{basicreq}
+\usepackage{./teaching_doc_macros}
+
+\begin{document}
+	
+	%FILL IN THE RIGHT INFO.
+	%\lecture{**LECTURE-NUMBER**}{**UNIT**}{**LECTURER**}{**SCRIBE**}
+	\lecture{16}{Jointly Typical Lemma}{Shashank Vatedka}{Ritesh Kumar}
+	%\footnotetext{These notes are partially based on those of Nigel Mansell.}
+	
+	% **** YOUR NOTES GO HERE:
+	
+	% Some general latex examples and examples making use of the
+	% macros follow.  
+	%**** IN GENERAL, BE BRIEF. LONG SCRIBE NOTES, NO MATTER HOW WELL WRITTEN,
+	%**** ARE NEVER READ BY ANYBODY.
+	\section{Jointly typical lemma}
+
+Consider a distribution $P_{XYZ}$ such that Z $\sim$  i.i.d $P_{Z|XY}$, if X and Y are typical, then Z will also be typical. If Z is not driven from the distribution $P_{Z|XY}$ but it's driven from another distribution i.e Z $\sim$ $P_{Z|X}$ that is Z is independent to Y.\\
+\textbf{Lemma1.1:} Suppose we have sequences $x^{n}$ and $y^{n}$, then for any $\left( x^n, y^n \right)$,and $Z^n \sim P^{n}_{Z|X}\left( .|x^n\right)$,  then for any $\epsilon >0$,
+\begin{equation}
+	Pr \left[ \left(x^n, y^n,z^n \right) \in T^{(n)}_{\epsilon}  \left( P_{XYZ}\right)\right] \leq 2^{-nI\left( Y; Z|X\right) \left(1 + \delta(\epsilon)\right)} 
+\end{equation}
+for some $\delta(\epsilon) \rightarrow 0$ as $\epsilon \rightarrow 0$.\\
+It gives an upper bound on the probability of 3 sequences being jointly typical. For the upper bound  $ x^n$and $ y^n$ may jointly typical or not. In some cases, we also use a lower bound on the probability that they are jointly typical. Hence similar to the upper bound, we have a lower bound on that as follows\\
+\textbf{lemma 1.2} For any $\epsilon > \epsilon'$,
+\begin{equation}
+	Pr \left[ \left(x^n, y^n,z^n \right) \in T^{(n)}_{\epsilon}  \left( P_{XYZ}\right)\right] > 2^{-nI\left( Y;Z|X\right) \left(1 + \delta(\epsilon)\right)} 
+\end{equation}
+for some $\delta(\epsilon) \rightarrow 0$ as $\epsilon \rightarrow 0$.\\ For the lower bound, we have to assume that, $x^n$ and $y^n$ are jointly typical. If they are not jointly typical then, we may not have this lower bound.
+
+\begin{proof}
+\begin{equation}
+	Pr \left[ \left( x^n,y^n,z^n \in T^{n}_{\epsilon} \left(  P_{XYZ} \right)\right)\right] = \sum_{z^{n} : \left( (x^n,y^n,z^n )\in T^{n}_{\epsilon} \left(  P_{XYZ} \right) \right) } \prod_{i = 1}^{n} P_{Z|X} \left( z_{i}|x_{i}\right) \label{16.3}
+\end{equation}
+$\prod_{i = 1}^{n} P_{Z|X} \left( z_{i}|x_{i}\right)$ belong to conditional typical set which is $z^{n} \in T^{n}_{\epsilon} \left( P_{XZ|x^n}\right)$ and for condtional typical set, the probability of nay $z^n$ in the set is $\approx$ $2^{-nH(Z|X) (1- \epsilon)}$, that is
+\begin{equation}
+	Pr_{Z|X}\left( z^n | x^n \right) \leq  2^{-nH(Z|X) (1 -\epsilon)} \label{16.4}
+\end{equation}
+In R.H.S. of equation \eqref{16.3}, we are summing all the possible sequences in the different typical set ( which is not conditional typical set ). There we are considering $z^n$ for which we are summing over the is   $T^{n}_{\epsilon} \left(  P_{XYZ} \right) $ set. Hence the equation \eqref{16.3} can be bounded as :
+\begin{multline}
+Pr \left[ \left( x^n,y^n,z^n \in T^{n}_{\epsilon} \left(  P_{XYZ} \right)\right)\right] = \sum_{z^{n} : \left( (x^n,y^n,z^n )\in T^{n}_{\epsilon} \left(  P_{XYZ} \right) \right) } \prod_{i = 1}^{n} P_{Z|X} \left( z_{i}|x_{i}\right) \\ \leq  |T^{n}_{\epsilon} \left(  P_{XYZ} \right) |2^{-nH(Z|X) (1 -\epsilon)}\label{16.5}
+\end{multline}
+The size of the typical set is bounded as :
+\begin{equation}
+	|T^{n}_{\epsilon} \left(  P_{XYZ} \right) | \leq  2^{nH(Z|X) (1 +\epsilon)} \label{16.6}
+\end{equation}
+Now using equation \eqref{16.4} and equation \eqref{16.6} in \eqref{16.5} ,
+\begin{align*}
+	Pr \left[ \left( x^n,y^n,z^n \in T^{n}_{\epsilon} \left(  P_{XYZ} \right)\right)\right] \leq  2^{nH(Z|X) (1 +\epsilon)} \times  2^{-nH(Z|X) (1 \epsilon)}\\ \leq 2^{ -n \left[ H(Z|X) - H(Z|XY) - \epsilon \left( H(Z|X) - H(Z|XY) \right)\right]} \\ = 2^{ -n \left[I\left( Z ; Y|X\right)(1-\epsilon)\right]}
+\end{align*}
+Hence,
+\begin{equation}
+Pr \left[ \left( x^n,y^n,z^n \in T^{n}_{\epsilon} \left(  P_{XYZ} \right)\right)\right] \leq 2^{ -n \left[I\left( Z ; Y|X\right)(1-\epsilon)\right]}
+\end{equation}
+Now coming the proof of lemma 1.2 \\
+ For the lower bound, we have to assume that, $x^n$ and $y^n$  are jointly typical i.e $\left( (x^n,y^n) \in T^{n}_{\epsilon'}\right)$ and $Z^n \sim P^{n}_{Z|X}\left( .|x^n\right)$
+ 
+ \begin{align}
+ 	Pr \left[ \left( x^n,y^n,z^n \in T^{n}_{\epsilon} \left(  P_{XYZ} \right)\right)\right] = \sum_{z^{n} : \left( (x^n,y^n,z^n )\in T^{n}_{\epsilon} \left(  P_{XYZ} \right) \right) }  P_{Z|X} \left( z^n|x^n \right)  \label{16.8}
+ \end{align}
+\begin{align}
+\sum_{z^{n} : \left( (x^n,y^n,z^n )\in T^{n}_{\epsilon} \left(  P_{XYZ} \right) \right) }  P_{Z|X} \left( z^n|x^n \right)	\geq   \sum_{z^{n} : \left( (x^n,y^n,z^n )\in T^{n}_{\epsilon} \left(  P_{XYZ} \right) \right) } 2^{-nH(Z|X) (1 +\epsilon)}\\
+=  2^{-nH(Z|X) (1 +\epsilon)}  \sum_{z^{n} : \left( (x^n,y^n,z^n )\in T^{n}_{\epsilon} \left(  P_{XYZ} \right) \right) } 1 \label{16.10}
+\end{align} 
+ For this condition the size of the typical set is bounded as :
+ \begin{equation}
+ 	|T^{n}_{\epsilon} \left(  P_{XYZ} \right) | \leq  2^{nH(Z|X) (1 -\epsilon)} \label{16.11}
+ \end{equation}
+ 
+ Now using equation \eqref{16.11} in equation \eqref{16.10} we have,
+ \begin{align*}
+ Pr \left[ \left( x^n,y^n,z^n \in T^{n}_{\epsilon} \left(  P_{XYZ} \right)\right)\right] \geq 2^{-nH(Z|X) (1 +\epsilon)} \times   2^{nH(Z|X) (1 -\epsilon)}\\
+ =  2^{ -n \left[ H(Z|X) - H(Z|XY) - \epsilon \left( H(Z|X) - H(Z|XY) \right)\right]} \\ = 2^{ -n \left[I\left( Z ; Y|X\right)(1-\epsilon)\right]}\\
+ = 2^{ -n \left[I\left( Z ; Y|X\right) + \delta(\epsilon)\right]}
+ \end{align*}
+ finally,
+ \begin{equation}
+  Pr \left[ \left( x^n,y^n,z^n \in T^{n}_{\epsilon} \left(  P_{XYZ} \right)\right)\right] \geq 2^{ -n \left[I\left( Z ; Y|X\right) + \delta(\epsilon)\right]}
+ \end{equation} 
+This concludes the proof of lemmas 1.1 and 1.2
+\end{proof}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          	
+\end{document}
+
