@@ -24,7 +24,7 @@
 	%**** ARE NEVER READ BY ANYBODY.
 
 \section{Fano's inequality}
-Consider M and $\hat{M}$ are jointly distributed and probability of error $P_e \approx Pr[M \neq \hat{M}]$. And M \& $\hat{M}$
+Consider M and $\hat{M}$ are jointly distributed and probability of error $P_e = Pr[M \neq \hat{M}]$. And M \& $\hat{M}$
  $\in \mathbb{M}$. Then 
  
 \begin{equation}
@@ -41,80 +41,80 @@ Consider M and $\hat{M}$ are jointly distributed and probability of error $P_e \
  \end{equation}
  So,we have $P_E(1)= P_e , P_E(0) = 1 -P_e$, and we can write $H(E) = H_{2}(P_e)$. Now
 \begin{gather}
-H \left (M,\frac{E}{\hat{M}} \right) = H \left (\frac{M}{\hat{M}} \right ) + H \left(\frac{E}{M}, \hat{M} \right) \text{ (chain rule of entropy)}\\
-\hspace*{-9mm}H \left(\frac{M}{\hat{M}}\right)  = H \left( \frac{E}{\hat{M}}\right) +  H \left( \frac{M}{E}, \hat{M} \right) - H\left(   \frac{E}{M\hat{M}} \right)
+H \left (M,E|\hat{M} \right) = H \left (M|\hat{M} \right ) + H \left(E|M, \hat{M} \right) \text{ (chain rule of entropy)}\\
+\hspace*{-9mm}H \left(M|\hat{M} \right)  = H \left( E|\hat{M}\right) +  H \left( E|M, \hat{M} \right) - H\left( E|M\hat{M} \right)
 \end{gather} 
 Since E is independent from M and $\hat{M}$, we can write, 
 \begin{gather}
-\hspace*{-6.5cm} H \left(\frac{M}{\hat{M}}\right)  = H \left( \frac{E}{\hat{M}}\right) +  H \left( \frac{M}{E}, \hat{M} \right)\\
-\hspace*{-5.5cm} \leq  H\left( E\right) +   H \left( \frac{M}{E}, \hat{M} \right) \\
- = H_{2}\left( P_e\right) +   H \left( \frac{M}{\hat{M}}, E=0 \right) P_E(0) +  H \left( \frac{M}{\hat{M}}, E=1 \right) P_E(1)
+\hspace*{-6.5cm} H \left(M| \hat{M}\right)  = H \left( E|\hat{M} \right) +  H \left( \frac{M}{E}, \hat{M} \right)\\
+\hspace*{-5.5cm} \leq  H\left( E\right) +   H \left( M|E, \hat{M} \right) \\
+ = H_{2}\left( P_e\right) +   H \left( M| \hat{M}, E=0 \right) P_E(0) +  H \left( M| \hat{M}, E=1 \right) P_E(1)
 \end{gather}
-Here,  $ H \left( \frac{M}{\hat{M}}, E=0 \right) = 0$ because for E = 0 , M = $\hat{M}$, and hence entropy = 0.
+Here,  $ H \left( M| \hat{M}, E=0 \right) = 0$ because for E = 0 , M = $\hat{M}$, and hence entropy = 0.
  \begin{gather}
-\hspace*{.5cm} = H_{2}\left( P_e\right) +  H \left( \frac{M}{\hat{M}}, E=1 \right) P_E(1)\\
- = H_{2}\left( P_e\right) +  H \left( \frac{M}{\hat{M}}, E=1 \right) P_e\\
+\hspace*{.5cm} = H_{2}\left( P_e\right) +  H \left( M| \hat{M}, E=1 \right) P_E(1)\\
+ = H_{2}\left( P_e\right) +  H \left( M| \hat{M}, E=1 \right) P_e\\
 \hspace*{-1.3cm} \leq  H_{2}\left( P_e\right) +  H \left(M\right) P_e\\
 \hspace*{.2cm} \leq  H_{2}\left( P_e\right) +  P_e \text{log}_{2}|\mathbb{M}|\hspace*{2mm} \text{Proved.}
  \end{gather}
  \section{Proof of converse channel coding theorem}
 
-Consider any sequence with (ENC$_{n}$, DEC$_{n}$) such that ,\\
+\textbf{Theorem :} Consider any sequence with (ENC$_{n}$, DEC$_{n}$) for DMC with transition probability P$_{Y|X}$ such that ,\\
 \begin{eqnarray*}
  \stackunder{$\liminf$}{n$\rightarrow \infty$} \frac{K_n}{n} \geq C + \epsilon
  \end{eqnarray*}
  then, 
  \begin{eqnarray*}
- 	 P_{e} = \stackunder{$\limsup$ }{$n$ $\rightarrow$ $\infty$} =  Pr \left [ \hat{M}_{i} \neq M_{i} \right ] \geq \epsilon
+ 	 P_{e} = \stackunder{$\limsup$ }{$n$ $\rightarrow$ $\infty$} =  Pr \left [ \hat{M}_{i} \neq M_{i} \right ] \geq \frac{\epsilon}{R}
  \end{eqnarray*} 
  \begin{figure}[h!]
   \centering
  \includegraphics[height=.10\textheight]{pic6.pdf}
- \caption{ Single user over DMC channel }
+ \caption{ Single user over DMC }
  \label{fig11.1}
  \end{figure}
  
-\textbf{Proof:} \\ we need some well known inequalities to prove this. 1) Fano's inequality and 2) bound on mutual information. Fano's inequality we have discussed just above and now let discuss bound on mutual information.\\
-For any P$_{X^n}$, if Y$^{n}$ is obtained by passing of X$^{n}$ through Discrete memoryless channel having transition probability P$_{\frac{Y}{X}}$  then,
+\textbf{Proof:} \\ We need some well-known inequalities to prove this. 1) Fano's inequality and 2) bound on mutual information. Fano's inequality we have discussed just above and now let us discuss bound on mutual information.\\
+\textbf{Lemma :} \hspace{1mm}For any P$_{X^n}$, if Y$^{n}$ is obtained by passing  X$^{n}$ through Discrete memoryless channel having transition probability P$_{Y|X}$  then,
 \begin{equation}
 	I \left( X^n ; Y^n\right) \leq \sum_{i=1}^{n} I \left( {X_i ; Y_i} \right) \leq nC \label{11.12}
 \end{equation}
- 
- Now using expression of mutual information,
+ \textbf{Proof of lemma :}\\\\
+Consider the expression of mutual information,
  \begin{gather}
- 	I\left( X^n; Y^n\right) = H \left( Y^n\right) - H \left( \frac{Y^n}{X^n}\right) \label{11.13}\\
- = \sum_{i =1}^{n} \left[ H \left( \frac{Y_i}{Y_1, Y_2 \dots Y_{i-1},}\right) - H \left( \frac{Y_i}{Y_1, Y_2 \dots Y_{i-1}, X^n} \right)\right] \label{11.14}
+ 	I\left( X^n; Y^n\right) = H \left( Y^n\right) - H \left( Y^n|X^n\right) \label{11.13}\\
+ = \sum_{i =1}^{n} \left[ H \left(Y_i|Y_1, Y_2 \dots Y_{i-1}\right) - H \left( Y_i|Y_1, Y_2 \dots Y_{i-1}, X^n \right)\right] \label{11.14}
  \end{gather}
  	\hspace{10cm} $\left( \text{Chain rule of entropy}\right)$	
  	\begin{gather}
- 	\leq \sum_{i=1}^{n} \left[ H\left( Y_i\right) - H\left( \frac{Y_i}{Y_1, Y_2 \dots Y_{i-1}, X^n} \right) \right] \label{11.15}
+ 	\leq \sum_{i=1}^{n} \left[ H\left( Y_i\right) - H\left( Y_i|Y_1, Y_2 \dots Y_{i-1}, X^n \right) \right] \label{11.15}
  	\end{gather}
  	\hspace{10cm} $\left( \text{Since conditioning decreases  entropy}\right)$\\ 
  Now,
  \begin{equation}
- H \left( \frac{Y_i}{Y_1, Y_2 \dots Y_{i-1}, X^n} \right)   =  \sum_{x^n, y_1, \dots , y_n} P\left( \frac{y_i}{y_1, \dots y_{i-1}, x^n}\right) \times \text{log}\left(  \frac{1}{ P\left( \frac{y_i}{ y_1, \dots y_{i-1}, x^n } \right)}  \right) \label{11.16}
+ H \left( Y_i|Y_1, Y_2 \dots Y_{i-1}, X^n \right)   =  \sum_{x^n, y_1, \dots , y_n} P_{Y|X}\left( y_i|y_1, \dots y_{i-1}, x^n \right) \times \text{log}\left( \frac{1}{P_{Y|X}\left( y_i|y_1, \dots y_{i-1}, x^n \right)}  \right) \label{11.16}
  \end{equation}
- 	Since for dicrete memoryless channel present output depends only on the present input, hence we can write.
+ 	Since for discrete memoryless channel present output depends only on the present input, hence we can write.
  	\begin{equation}	
- P\left( \frac{y_i}{y_1, \dots y_{i-1}, x^n}\right) =   P\left( \frac{y_i}{x_i, y_1,x_i \dots y_{i-1},x_{i-1} }\right) =  P\left( \frac{y_i}{ x_i}\right) \label{11.17}
+ P_{Y|X}\left( y_i|y_1, \dots y_{i-1}, x^n \right) =   P_{Y|X}\left( y_i |x_i, y_1,x_i \dots y_{i-1},x_{i-1} \right) =  P_{Y|X}\left( y_i | x_i \right) \label{11.17}
  \end{equation}
-Using eq \ref{11.17} in eq \ref{11.16}, we can write,
+Using eq \eqref{11.17} in eq \eqref{11.16}, we can write,
  	\begin{equation}
-  H \left( \frac{Y_i}{Y_1, Y_2 \dots Y_{i-1}, X^n} \right) =  \sum_{x^n, y_1, \dots , y_n} P\left( \frac{y_i}{x_i}\right) \times \text{log}\left(  \frac{1}{ P\left( \frac{y_i}{ x_i } \right)}  \right) = 	H\left( \frac{Y_i}{X_i, } \right) \label{11.18}	
+  H \left( Y_i|Y_1, Y_2 \dots Y_{i-1}, X^n \right) =  \sum_{x^n, y_1, \dots , y_n} P_{Y|X}\left( y_i|x_i \right) \times \text{log}_{2}\left(  \frac{1}{ P_{Y|X}\left( y_i| x_i \right)}\right) = 	H \left( Y_i|X_i \right) \label{11.18}	
  \end{equation}
-  By combining all i.e using eq\ref{11.18} in eq\ref{11.15} we can write,
+  By combining all i.e using eq\eqref{11.18} in eq\ref{11.15} we can write,
   \begin{equation}
-  = \sum_{i=1}^{n} \left[ H\left( Y_i\right) - H\left( \frac{Y_i}{ X_i} \right) \right]
+  = \sum_{i=1}^{n} \left[ H\left( Y_i\right) - H \left( Y_i| X_i \right) \right]
   \end{equation}
  And we have,
  \begin{equation}
- 	 \sum_{i=1}^{n} \left[ H\left( Y_i\right) - H\left( \frac{Y_i}{ X_i} \right) \right] = \sum_{i=1}^{n} I \left( {X_i ; Y_i} \right) \label{11.20}
+ 	 \sum_{i=1}^{n} \left[ H\left( Y_i\right) - H\left( Y_i |X_i \right) \right] = \sum_{i=1}^{n} I \left( {X_i ; Y_i} \right) \label{11.20}
  \end{equation}
-From  eq\ref{11.13}, eq\ref{11.15} and eq\ref{11.20} we have,
+From  eq\eqref{11.13}, eq\eqref{11.15} and eq\eqref{11.20} we have,
 \begin{equation}
 	I \left( X^n ; Y^n\right) \leq \sum_{i=1}^{n} I \left( {X_i ; Y_i} \right) \leq nC \label{11.21}
 \end{equation}
-This conclude the proof of eq \ref{11.12}. \\
+This conclude the proof of eq \eqref{11.12}. \\
 
 \textbf{Proof of converse:}
 
@@ -122,8 +122,8 @@ This conclude the proof of eq \ref{11.12}. \\
 We have message, which is i.i.d and uniform so we can write,
 \begin{gather}
 	K_n = H \left( M^{K_n}\right)\\
-	= H\left( \frac{M^{K_n}}{\hat{M}^{K_n}}\right) + I\left( M^{K_n} ; \hat{M}^{K_n}\right)\\
-   \leq H_{2}(P_{e}) + P_{e}log_{2}(2^{M^{K_{n}}}) + I(M^{K_{n}}:{M'}^{K_{n}})
+	= H\left( M^{K_n}|\hat{M}^{K_n}\right) + I\left( M^{K_n} ; \hat{M}^{K_n}\right)\\
+   \leq H_{2}(P_{e}) + P_{e}\text{log}_{2}(2^{M^{K_{n}}}) + I(M^{K_{n}}:{M'}^{K_{n}})
 \end{gather}
 \hspace{10cm} $\left(\text{ using Fano's inequality} \right)$
 \begin{gather}
@@ -159,17 +159,17 @@ Let $\frac{K_{n}}{n} = R $, \\
   \end{align}
 \begin{figure}[h!]
 	\centering
-	\includegraphics[height=.20\textheight]{pic7.1.pdf}
+	\includegraphics[height=.20\textheight]{pic7.pdf}
 	\caption{Probability of error with capacity constraint }
 	\label{fig11.2}
 \end{figure}
 That is probability or error  is always non-zero.But if we operate the channel  below the capacity and for large n, in \eqref{2.15} we can observe P$_{e}$  approaches to 0.  
   
-  \section{Mrs Gerber's Leema:}
+  \section{Mrs Gerber's Lemma:}
 
 Suppose we have X = $\left( X_i, \dots X_n\right)$ where X$_{i} \in \mathbb{M}^{{n}} \in \left \{ 0,1\right \}$
  be a binary random n-vector.
-Let P$_{X}(x)= P\left( X = x \right)$, where $x \in \mathbb{M}^{n}$  define its probability distribution Let say X $~$ Ber(q). Let us consider that the random vector X is the input to a binary symmetric channel with crossover probability  P, where $0 < P < \frac{1}{2}$.
+Let P$_{X}(x)= P\left( X = x \right)$, where $x \in \mathbb{M}^{n}$  define its probability distribution Let say X $\sim$ Ber(q). Let us consider that the random vector X is the input to a binary symmetric channel with crossover probability  p, where $0 < p < \frac{1}{2}$.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[height=.12\textheight]{pic8.pdf}
@@ -183,26 +183,26 @@ We will use notation \textbf{p$\star$q = p(1-q) + q(1-p)}. Then ,
 \begin{equation}
 	H(Y) \geq H_{2}\left( p \star H_{2}^{-1} \left( H(X)\right)\right) \label{11.31}	
 \end{equation}		
-with equality if and only if the ${\left\{X_{i}\right \}_{1}}^{n}$ are independent. and H$\left\{ X_k
+with equality if and only if the ${\left\{X_{i}\right \}_{1}}^{n}$ are independent. and H$\left\{ X^k
 \right\} = kp$ 
 
-Suppose we are generation X which depends on some distribution U, and it passes through BSC(p) (with transition probability p) with output distribution Y. Then,
+\textbf{Lemma :} \hspace{1mm} Suppose we are generating X which depends on some distribution U, and it passes through BSC(p) (with transition probability p) with output distribution Y. Then,
 \begin{equation}
 	H\left(\frac{Y}{U}\right) \geq H_2\left( H_{2}^{-1}\left( H\left( \frac{X}{U}\right)\right) \star p\right)
 \end{equation}
 \begin{figure}[h!]
 	\centering
 	\includegraphics[height=.12\textheight]{pic9.pdf}
-	\caption{BSC channel }
+	\caption{Binary symmetric channel }
 	\label{fig11.4}
 \end{figure}
 
 In vector form,
 \begin{equation}
-	\frac{H\left( Y^{n}|u \right)}{n} \geq H_2\left( H_{2}^{-1}\left( H\left(\frac{ X^{n}|u}{n}\right)\right) \star p\right)
+	\frac{H\left( Y^{n}|U \right)}{n} \geq H_2\left( H_{2}^{-1}\left( H\left(\frac{ X^{n}|U}{n}\right)\right) \star p\right)
 \end{equation}
 
-\textbf{proof:} \\
+\begin{proof}
 We have claim ,
 \begin{equation}
 	H\left(\frac{Y}{U}\right) \geq H_2\left( H_{2}^{-1}\left( H\left( \frac{X}{U}\right)\right) \star p\right)
@@ -212,7 +212,7 @@ Considering R.H.S. of the inequality we have,
  H_2\left( H_{2}^{-1}\left( H\left( \frac{X}{U}\right)\right) \star p\right) \label{11.35}
 \end{equation}
 Suppose we have $f(u) = H_{2} \left( H_{2}^{-1}(u)\star p\right)$.\\
-Now, eq \ref{11.35} can be written as, 
+Now, eq \eqref{11.35} can be written as, 
 \begin{equation}
 f \left( \sum_{u} P_{U}(u). H \left( X | U = u\right)\right)
 \end{equation}
@@ -236,6 +236,8 @@ Hence,
 \begin{equation}
 	H\left(\frac{Y}{U}\right) \geq H_2\left( H_{2}^{-1}\left( H\left( \frac{X}{U}\right)\right) \star p\right)
 \end{equation}
-and this conclude the proof.
+and this concludes the proof.
+\end{proof}
+
 \end{document}
 
