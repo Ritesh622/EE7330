@@ -211,11 +211,30 @@ Considering R.H.S. of the inequality we have,
 \begin{equation}
  H_2\left( H_{2}^{-1}\left( H\left( \frac{X}{U}\right)\right) \star p\right) \label{11.35}
 \end{equation}
-Suppose we have $f(u) = H_{2} \left( H_{2}^{-1}(u)\star p\right)$.\\
+Suppose we have $f(u) = H_{2} \left( H_{2}^{-1}(v)\star p\right)$.\\
 Now, eq \eqref{11.35} can be written as, 
-\begin{equation}
+\begin{equation}	
 f \left( \sum_{u} P_{U}(u). H \left( X | U = u\right)\right)
 \end{equation}
+ \textbf{Claim :} $f$ is convex function. 
+ \begin{proof}
+ 	We have $f(u) = H_{2} \left( H_{2}^{-1}(v)\star p\right)$.
+ Let consider, $ g(u) = H_{2}^{-1}(v),$\\ 
+ Then, we can write,
+ \begin{eqnarray*}
+ f(u) = H_{2} \left(g(u)\star p\right),\\
+ f(u) = H_{2} \left( g(u)(1-p) + \left(1-g(u)\right)p\right)	
+ \end{eqnarray*}
+put $\alpha = g(u)(1-p) + \left(1-g(u)\right)p $, so we have,
+ \begin{eqnarray*}
+	f(u) = H_{2} \left( \alpha \right)= - \left[ \alpha \log_{2}(\alpha) + (1-\alpha) \log_{2}(1-\alpha)\right]	\\
+	f'(u) = - \left[ \frac{\alpha}{\alpha} + \log_{2}\alpha \frac{1-\alpha}{ 1-\alpha} (-1) + (-1) \log_{2}(1-\alpha)\right] \frac{1}{\ln(2)}. \frac{\partial \alpha }{\partial u}  \\
+	f'(u) = - \frac{1}{\ln(2)}.g'(u)(1-2p) \left[ \log (\frac{\alpha}{1- \alpha})\right]\\
+	f''(u) = \frac{1}{\ln(2)}.g''(u)(1-2p)^2 \left[  \frac{2- \alpha}{\alpha (1 -\alpha)}\right]
+\end{eqnarray*}	
+ Here $f''(u)$ is always positive for $0< \alpha <1$, hence $f$ is convex function.		
+ 	\end{proof}
+ Now coming to main proof of lemma.
 Since $f$ is convex function, we can write,
 \begin{equation}
 f \left( \sum_{u} P_{U}(u). H \left( X | U = u\right)\right) \leq   \sum_{u} P_{U}(u). f \left(H \left( X | U = u\right)\right) 
